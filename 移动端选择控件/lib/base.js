@@ -54,7 +54,7 @@ window.Pcontrols = (function () {
                 picker.addEventListener('touchmove', getTouchMove);
                 picker.addEventListener('touchend', getTouchEnd);
             };
-            _self.trigger.addEventListener('click', popupArea);
+            _self.trigger.addEventListener('touchstart', popupArea);
             function areaCtrlInit() {
                 var popupitems = document.querySelector(".popup-items");
                 var l = _self.data.length;
