@@ -1,0 +1,326 @@
+canvas {
+	margin: auto;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+#mainDiv {
+	padding:0.2rem;
+	position: absolute;
+	top:0;
+	left:0;
+}
+.swiper_2 {
+	width: 100%;
+	background: url(../images/hbg.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.swiper_3 {
+	width: 100%;
+	background: url(../images/whtbg.jpg) no-repeat;
+	background-size: 100% 100%;
+	/* position: relative; */
+}
+.whtfront {
+	position: relative;
+	top:0;
+	left:0;
+	z-index: 100;
+}
+.whtimgs {
+	width:100%;
+	padding:0;
+	z-index: 1;
+	position: relative;
+}
+.whtpics {
+	width:100%;
+	position: absolute;
+	top:0;
+	left:0;
+	/* animation: music 8s linear infinite;
+	-webkit-animation: music 8s linear infinite; */
+}
+.rotepic {
+	animation: music 1s linear;
+	-webkit-animation: music 1s linear;
+}
+.swiper_2_1 {
+	height: 5%;
+	text-align: center;
+	width:100%;
+	padding:0;
+	margin: 0;
+	line-height: 1;
+	color:#ff4a00
+}
+.contaiers {
+    width:100%;
+    height:25%;
+    overflow: hidden;
+}
+.contaier {
+    flex: 1;
+    height:100%;
+    border: 1px solid #fff;
+    perspective: 1000;
+	position: relative;
+    transform-style: preserve-3d; /*重要*/
+}
+.contaier0 {
+    width:100%;
+	height:100%;
+	transition: 1s;
+    transform-style: preserve-3d; /*重要*/
+}
+/* // 水平居中 */
+.hor-center {
+  display: flex;
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -webkit-justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.font {
+    position: absolute;
+	transition: all 1s ease;
+	-moz-transition:all 1s ease; /* Firefox 4 */
+	-webkit-transition:all 1s ease; /* Safari and Chrome */
+	-o-transition:all 1s ease; /* Opera */
+	backface-visibility: hidden;
+	-webkit-backface-visibility:hidden;	/* Chrome 和 Safari */
+	-moz-backface-visibility:hidden; 	/* Firefox */
+	-ms-backface-visibility:hidden; 	/* Internet Explorer */
+	/* transform:rotateY(0deg); */
+    width:100%;
+    height:100%;
+    z-index: 10;
+}
+.back {
+	position: absolute;
+	background-color: #fff;
+    transition: all 1s ease;
+	-moz-transition:all 1s ease; /* Firefox 4 */
+	-webkit-transition:all 1s ease; /* Safari and Chrome */
+	-o-transition:all 1s ease; /* Opera */
+	backface-visibility: hidden;
+	-webkit-backface-visibility:hidden;	/* Chrome 和 Safari */
+	-moz-backface-visibility:hidden; 	/* Firefox */
+	-ms-backface-visibility:hidden; 	/* Internet Explorer */
+    width:100%;
+    height:100%;
+	transform:rotate3d(0,1,0,180deg);
+	-ms-transform:rotate3d(0,1,0,180deg); 	/* IE 9 */
+	-moz-transform:rotate3d(0,1,0,180deg); 	/* Firefox */
+	-webkit-transform:rotate3d(0,1,0,180deg); /* Safari 和 Chrome */
+	-o-transform:rotate3d(0,1,0,180deg); 	/* Opera */
+    z-index: 8;
+}
+.front2 {
+    position: absolute;
+    transition: all 1s ease;
+	-moz-transition:all 1s ease; /* Firefox 4 */
+	-webkit-transition:all 1s ease; /* Safari and Chrome */
+	-o-transition:all 1s ease; /* Opera */
+	backface-visibility: hidden;
+	-webkit-backface-visibility:hidden;	/* Chrome 和 Safari */
+	-moz-backface-visibility:hidden; 	/* Firefox */
+	-ms-backface-visibility:hidden; 	/* Internet Explorer */
+    width:100%;
+    height:100%;
+    transform:rotate3d(0,1,0,180deg);
+    z-index: 8;
+
+}
+.back2 {
+    position: absolute;
+	transition: all 1s ease;
+	background-color: #fff;
+	-moz-transition:all 1s ease; /* Firefox 4 */
+	-webkit-transition:all 1s ease; /* Safari and Chrome */
+	-o-transition:all 1s ease; /* Opera */
+	backface-visibility: hidden;
+	-webkit-backface-visibility:hidden;	/* Chrome 和 Safari */
+	-moz-backface-visibility:hidden; 	/* Firefox */
+	-ms-backface-visibility:hidden; 	/* Internet Explorer */
+    width:100%;
+    height:100%;
+    transform:rotate3d(0,1,0,0deg);
+    z-index: 10;
+}
+.cam {
+	padding:0 0.8rem;
+}
+.passtime {
+	background: url(../images/our2_2.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.goingtimebg {
+	opacity: 0.7;
+	background-color: #fff;
+}
+.goingtime {
+	width:70%;
+	height:70%;
+	position: absolute;
+	top:50%;
+	left: 50%;
+	margin-left:-35%;
+	margin-top:-15%;
+	
+}
+.wbg {
+	background: url(../images/wbg.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.endbg {
+	background: url(../images/end.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.wbox{
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	width:100%;
+}
+.wboxitem {
+	flex:1;
+}
+.contaierss {
+    width:100%;
+    height:40%;
+    overflow: hidden;
+}
+.contaiersss {
+    width:100%;
+    height:20%;
+    overflow: hidden;
+}
+.contaierssm {
+	width:100%;
+    height:70%;
+    overflow: hidden;
+}
+.contaiersssm {
+	width:100%;
+    height:30%;
+    overflow: hidden;
+}
+.mmboxitem {
+	flex:37.3%;
+}
+.mboxitem {
+	flex:62.7%;
+}
+.whtlrcont {
+	width:50%;
+	position: relative;
+	height:1rem;
+	margin:0 auto;
+}
+#whtlr {
+	position: absolute;
+	width:1.8rem;
+	left: 50%;
+	margin-left: -0.9rem;
+	animation: movelr 2s linear 1s infinite alternate;
+	-webkit-animation: movelr 2s linear 1s infinite alternate;
+}
+.opac1 {
+	animation: movelr 1s linear 1s infinite ;
+	-webkit-animation: movelr 1s linear 1s infinite alternate;
+}
+.opac2 {
+	animation: movelr 1s linear 0.5s infinite alternate;
+	-webkit-animation: movelr 1s linear 0.5s infinite alternate;
+}
+.opac3 {
+	animation: movelr 1s linear 1.2s infinite alternate;
+	-webkit-animation: movelr 1s linear 1.2s infinite alternate;
+}
+@keyframes movelr {
+	from {
+		opacity: 0.2
+	}
+	to {
+		opacity: 1
+	}
+}
+.sea-column {
+	width:100%;
+	height: 20%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	
+}
+.sea-pic {
+	width:100%;
+	height: 80%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	
+}
+.sea-img {
+	width:80%;
+	height: 80%;
+	border: 1px solid #fff;
+	padding:2%;
+	overflow: hidden;
+}
+.seaflex {
+    width:100%;
+    height:50%;
+    overflow: hidden;
+}
+.stln {
+	position: absolute;
+	left:0;
+	bottom: 0.1rem;
+	width:100%;
+	/* height:1rem; */
+	/* background-color: #ababab; */
+	z-index: 11;
+	/* opacity: 0.5 */
+}
+.lovetime {
+	position: relative;
+	width:100%;
+}
+.lovetimeimg{
+ position: absolute;
+ top:0;
+ left:0;	
+}
+.lovetimeimg2{
+	position: absolute;
+	top:0;
+	left:0;	
+	height: 100%;
+	animation: lovetimeimg2 8s linear 0s infinite alternate;
+	-webkit-animation: lovetimeimg2 8s linear 0s infinite alternate;
+}
+@keyframes lovetimeimg2 {
+	from {
+		/* left:0%; */
+		
+		transform: translate3d(0,0,0);
+		-ms-transform: translate3d(0,0,0); 	/* IE 9 */
+		-moz-transform: translate3d(0,0,0); 	/* Firefox */
+		-webkit-transform: translate3d(0,0,0); /* Safari 和 Chrome */
+		-o-transform: translate3d(0,0,0); 	/* Opera */
+	}
+	to {
+		/* left:-100%; */
+		transform: translate3d(-50%,0,0);
+		-ms-transform: translate3d(-50%,0,0); 	/* IE 9 */
+		-moz-transform: translate3d(-50%,0,0); 	/* Firefox */
+		-webkit-transform: translate3d(-50%,0,0); /* Safari 和 Chrome */
+		-o-transform: translate3d(-50%,0,0); 	/* Opera */
+	}
+}

@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <meta name="Cache-Control" content="private">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <!--阿里移动端高清方案代码  详情 https://github.com/minooo/React-Study/tree/master/step-03 -->
+    <script>
+        !function (e) { function t(a) { if (i[a]) return i[a].exports; var n = i[a] = { exports: {}, id: a, loaded: !1 }; return e[a].call(n.exports, n, n.exports, t), n.loaded = !0, n.exports } var i = {}; return t.m = e, t.c = i, t.p = "", t(0) }([function (e, t) { "use strict"; Object.defineProperty(t, "__esModule", { value: !0 }); var i = window; t["default"] = i.flex = function (e, t) { var a = e || 100, n = t || 1, r = i.document, o = navigator.userAgent, d = o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i), l = o.match(/U3\/((\d+|\.){5,})/i), c = l && parseInt(l[1].split(".").join(""), 10) >= 80, p = navigator.appVersion.match(/(iphone|ipad|ipod)/gi), s = i.devicePixelRatio || 1; p || d && d[1] > 534 || c || (s = 1); var u = 1 / s, m = r.querySelector('meta[name="viewport"]'); m || (m = r.createElement("meta"), m.setAttribute("name", "viewport"), r.head.appendChild(m)), m.setAttribute("content", "width=device-width,user-scalable=no,initial-scale=" + u + ",maximum-scale=" + u + ",minimum-scale=" + u), r.documentElement.style.fontSize = a / 2 * s * n + "px" }, e.exports = t["default"] }]); flex(100, 1);
+    </script>
+    <title>我们结婚啦</title>
+    <link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            /* text-align: left; */
+            font-size: 0.32rem;
+            /* background: #fff; */
+            position: relative;
+            /* Center slide text vertically */
+            /* display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center; */
+        }
+
+        .center-center-column {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            flex-direction: column;
+            flex-wrap: nowrap;
+        }
+
+        .img100 {
+            width: 100%;
+            display: block;
+            /* Center slide text vertically */
+            /* display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center; */
+        }
+
+        .swiper-container2 {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            /* box-shadow: 0 0 0.2rem #888888;
+            border: 10px solid#fff; */
+        }
+
+        .swiper-wrapper {
+            transition-timing-function: ease-in-out;
+        }
+
+        .load {
+            width: 100%;
+            height: 100%;
+            background: #fffff0;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #loading {
+            opacity: 1
+        }
+
+        .contains {
+            width: 60%;
+            height: 0.15rem;
+        }
+
+        .loading {
+            width: 100%;
+            height: 0.15rem;
+            border: 0.05rem solid #000;
+            border-radius: 0.1rem;
+        }
+
+        .loadingbg {
+            width: 0;
+            height: 100%;
+            background-color: #fbc72e
+        }
+
+        .num {
+            font-size: 0.32rem;
+            color: #000;
+            line-height: 0.8rem;
+        }
+
+        #app {
+            opacity: 0
+        }
+
+        .che {
+            width: 60%;
+            height: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .title {
+            width: 60%;
+            height: 0.32rem;
+            position: relative;
+            overflow: hidden;
+            text-align: right;
+        }
+
+        .che::after {
+            content: "";
+            width: 0.6rem;
+            height: 1rem;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: url(images/che2.png) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .cheing {
+            width: 0.78rem;
+            position: absolute;
+            left: 0;
+        }
+
+        #music {
+            position: absolute;
+            width: 0.4rem;
+            height: 0.4rem;
+            z-index: 5555555222;
+            top: 0.3rem;
+            right: 0.2rem;
+            display: none;
+        }
+
+        .row {
+            position: absolute;
+            width: 0.8rem;
+            height: 0.4rem;
+            bottom: 0.5rem;
+            left: 50%;
+            margin-left: -0.4rem;
+            z-index: 555555;
+            animation: row 1s linear 1s infinite alternate;
+            -webkit-animation: row 1s linear 1s infinite alternate;
+            display: none;
+        }
+
+        #h-video {
+            position: absolute;
+            top: -100%;
+            opacity: 0;
+        }
+
+        .musicplay {
+            animation: music 1.5s linear infinite;
+            -webkit-animation: music 1.5s linear infinite;
+        }
+
+        .pauseWalk {
+            animation-play-state: paused;
+            -webkit-animation-play-state: paused;
+            /* Safari 和 Chrome */
+        }
+
+        @keyframes music {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes row {
+            from {
+                opacity: 0
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        @-webkit-keyframes music {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .swiper-slide {
+            background-color: #e1e0e6;
+        }
+
+        #boy,
+        #girl {
+            opacity: 0;
+        }
+
+        .keyword {
+            color: #ff005a;
+        }
+
+        .our {
+            padding: 10%;
+        }
+
+        #btntoform {
+            -webkit-appearance: none;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loading" class="load center-center-column">
+        <div class="title">
+            <span id="boy">
+                亲爱的，嫁给我吧？
+            </span>
+            <span id="girl">
+                好！
+            </span>
+        </div>
+        <div class="che">
+            <img class="cheing" id="car" src="images/che.png" />
+        </div>
+        <div class="contains">
+            <div class="loading">
+                <div id="loadings" class="loadingbg"></div>
+            </div>
+        </div>
+        <div id="load-num" class="num">
+            0%
+        </div>
+    </div>
+    <img id="music" class="musicplay" src="images/music.png">
+    <img id="rowdown" class="row" src="images/rrow.png">
+    <div class="swiper-container" id="app">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide endbg">
+
+                <div id="mainDiv">
+                    <div id="content">
+                        <div id="code">
+                            {<br />
+                            <span class="comments">/**</span><br /><span class="space" /><span class="comments">** Created by <span class="keyword">CG</span> on 2017-09-17</span><br/><span class="space" /><span class="comments">*/</span><br /> "version": <span class="keyword">"1314"</span> ,<br/> "description": <span class="keyword">"愿在余下的岁月里，且以深情共白头"</span> ,<br/> "theme": <span class="keyword">"我们结婚啦！"</span> ,<br/> "Boy_name": Mr<span class="keyword"> CHEN</span> ,<br/> "Girl_name": Mrs<span class="keyword"> ZHANG</span> ,<br /> }<br /><img class="ani img100" src="images/our1.png" /></div>
+                    </div>
+                </div>
+                <!-- <p class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">Slide 2</p> -->
+            </div>
+            <div class="swiper-slide endbg">
+                <!-- <img class="img100" src="images/cam_01.jpg" style="position: absolute;z-index: 11;top: 0;" />
+                <img class="img100" src="images/cam_01.jpg" />
+                <div class="cam">
+                    <img class="ani img100" style="margin:0.2rem 0;" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"
+                        src="images/cam_02.jpg" />
+                    <img class="ani img100" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="1s" src="images/cam_03.jpg"
+                    />
+                </div> -->
+                <img class="ani img100" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.3s" swiper-animate-delay="0s" src="images/love_01.png"
+                />
+                <img class="ani img100" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.2s" swiper-animate-delay="0.5s" src="images/love_02.png"
+                />
+                <img class="ani img100" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s" src="images/love_03.png"
+                />
+                <div class="lovetime">
+                    <img class="ani img100" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.8s" src="images/love_04_1.png"
+                    />
+                    <img class="ani img100 lovetimeimg" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="2s"
+                        src="images/love_04.png" />
+                    <img class="ani img100 lovetimeimg" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="3s"
+                        src="images/love_04_2.png" />
+                    <img class="ani img100 lovetimeimg" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="4s"
+                        src="images/love_04_2_1.png" />
+                    <img class="ani img100 lovetimeimg" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="5s"
+                        src="images/love_04_3.png" />
+                    <img class="ani img100 lovetimeimg" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="6s"
+                        src="images/love_04_4.png" />
+
+                </div>
+                <img class="ani img100" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="1s" src="images/love_05.png"
+                />
+                <img class="ani img100" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="2s" src="images/love_06.png"
+                />
+                <img class="ani img100" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="6.5s" src="images/love_07.png"
+                />
+
+
+            </div>
+            <!-- <div class="swiper-slide" style="background-color:#d9e7e8">
+                <div class="contaiers hor-center passtime" style="position: relative;">
+                    <div class="goingtime goingtimebg"></div>
+                    <div class="goingtime center-center-column">
+                        <p style="font-size:0.5rem">一起走过的那些日子</p>
+                        <p style="color:#ff0084" id="elapseClock"></p>
+                    </div>
+                </div>
+                <div class="contaiers hor-center">
+                    <div class="contaier">
+                        <div class="contaier0">
+                            <div class="fpic front">
+
+                                <img class="img100" src="images/d_01.jpg" />
+
+                            </div>
+                            <div class="bpic back center-center-column ">
+                                 <img class="img100" src="images/t1.jpg" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contaier">
+                        <div class="contaier0">
+                            <div class="fpic front">
+
+                                    <img class="img100" src="images/d_02.jpg" />
+
+                            </div>
+                            <div class="bpic back center-center-column ">
+                                <img class="img100" src="images/t2_1.jpg" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="contaiers hor-center">
+                    <div class="contaier">
+                        <div class="contaier0">
+                            <div class="fpic front">
+                                    <img class="img100" src="images/d_03.jpg" />
+                                
+
+                            </div>
+                            <div class="bpic back center-center-column ">
+                                    <img class="img100" src="images/t3.jpg" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contaier">
+                        <div class="contaier0">
+                            <div class="fpic front">
+                                    <img class="img100" src="images/d_04.jpg" />
+                                
+
+                            </div>
+                            <div class="bpic back center-center-column ">
+                                    <img class="img100" src="images/t3_2.jpg" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="contaiers hor-center">
+                    <div class="contaier">
+                        <div class="contaier0">
+                            <div class="fpic front">
+                                    <img class="img100" src="images/d_05.jpg" />
+                                
+
+                            </div>
+                            <div class="bpic back center-center-column ">
+                                    <img class="img100" src="images/t6.jpg" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contaier">
+                        <div class="contaier0">
+                            <div class="fpic front">
+
+                                    <img class="img100" src="images/d_06.jpg" />
+
+                            </div>
+                            <div class="bpic back center-center-column ">
+                                <img class="img100" src="images/t6_1.jpg" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div> -->
+            <div class="swiper-slide endbg">
+                <img class="img100" src="images/forever_01.png" />
+                <div class="center-center-column">
+                    <p style="color:#ff0084" id="elapseClock"></p>
+                </div>
+                <div class="lovetime" style="background-color:#ff0084">
+                    <img class="img100" src="images/forever_02.png" />
+                    <img class="lovetimeimg2" src="images/forever_02_1.jpg" />
+                    <img class="img100 lovetimeimg" src="images/forever_02.png" />
+                </div>
+                <img class="ani img100" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s" src="images/forever_03.png"
+                />
+                <img class="ani img100" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.8s" src="images/forever_04.png"
+                />
+                <img class="ani img100" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="1s" src="images/forever_05.png"
+                />
+            </div>
+
+            <div class="swiper-slide center-center-column swiper_2" style="background-color:#fff">
+                <div class="sea-pic center-center-column ">
+                    <div class="sea-img">
+                        <div id="plpimg" style="width:100%;height:100%;overflow:hidden">
+                            <img src="images/1.jpg" class="img100" style="opacity: 0.5;" />
+                        </div>
+
+                    </div>
+                    <p style="color:#fff">打开漂流瓶查看我们的秘密</p>
+                    <p class="opac1" style="color:#fff; ">▼</p>
+                </div>
+                <div class="sea-column">
+                    <div class="seaflex hor-center">
+                        <div class="wboxitem sea-plp">
+                            <img src="images/sea_01.png" class="img100 opac1" />
+                        </div>
+                        <div class="wboxitem sea-plp">
+                            <img src="images/sea_02.png" class="img100 opac2" />
+                        </div>
+                        <div class="wboxitem sea-plp">
+                            <img src="images/sea_03.png" class="img100 opac3" />
+                        </div>
+                    </div>
+                    <div class="seaflex hor-center">
+                        <div class="wboxitem sea-plp">
+                            <img src="images/sea_04.png" class="img100 opac3 ani" />
+                        </div>
+                        <div class="wboxitem sea-plp">
+                            <img src="images/sea_05.png" class="img100 opac1 ani" />
+                        </div>
+                        <div class="wboxitem sea-plp">
+                            <img src="images/sea_06.png" class="img100 opac2 ani" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="swiper-slide center-center-column swiper_2" style="background-color:#fff">
+
+                <div class="swiper-container2">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img class="img100" src="images/f_01.jpg" /></div>
+                        <div class="swiper-slide"><img class="img100" src="images/f_02.jpg" /></div>
+                        <div class="swiper-slide"><img class="img100" src="images/f_03.jpg" /></div>
+                        <div class="swiper-slide"><img class="img100" src="images/f_04.jpg" /></div>
+
+
+                    </div>
+                    <!-- 美好时光，正好有你，或许，这就是注定 -->
+                    <!-- <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div> -->
+                </div>
+                <div class="stln">
+                    <img src="images/f_f.png" class="img100" />
+                </div>
+            </div>
+            <div class="swiper-slide swiper_3">
+                <div class="whtimgs">
+                    <img src="images/wht02.png" class="img100 whtfront" />
+                    <div id="whtpic" class="whtpics">
+                        <img src="images/wht0.png" class="img100 rotepic" />
+                    </div>
+
+
+                </div>
+                <img src="images/whttips.png" class="img100 ani" swiper-animate-effect="zoomIn" swiper-animate-duration="0.5s" swiper-animate-delay="0s"
+                />
+                <div class="hor-center whtlrcont">
+                    <img id="whtlr" src="images/whtbut.png" class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"
+                    />
+                </div>
+            </div>
+            <div class="swiper-slide" style="background-color:#fff">
+                <div class="contaierssm hor-center wbox">
+                    <div class="mboxitem">
+                        <img src="images/m_01.jpg" class="img100 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0s"
+                        />
+                        <img src="images/m_05.jpg" class="img100 ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s"
+                        />
+                    </div>
+                    <div class="mmboxitem">
+                        <img src="images/m_02.jpg" class="img100 ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s"
+                        />
+                        <img src="images/m_03.jpg" class="img100 ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s"
+                        />
+                        <img src="images/m_04.jpg" class="img100 ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s"
+                        />
+                    </div>
+
+                </div>
+                <div class="contaiersssm">
+                    <img src="images/m_06.jpg" class="img100 ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"
+                    />
+                </div>
+
+            </div>
+            <div class="swiper-slide wbg">
+                <img src="images/w_01.png" class="img100 ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s"
+                />
+                <img src="images/w_02.png" class="img100 ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s"
+                />
+                <div class="wbox">
+                    <div class="wboxitem">
+                        <img src="images/w_03.png" class="img100 ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"
+                        />
+                    </div>
+                    <div class="wboxitem">
+                        <img src="images/w_04.png" class="img100 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.8s"
+                        />
+                    </div>
+                    <div class="wboxitem">
+                        <img src="images/w_05.png" class="img100 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"
+                        />
+                    </div>
+                </div>
+                <img src="images/w_06.png" class="img100 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="1s"
+                />
+            </div>
+            <!-- <div class="swiper-slide" style="background-color:#d9e7e8">
+                    <div class="contaierss hor-center wbox">
+                            <div class="wboxitem">
+                                    <img src="images/f_01.jpg" class="img100 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0s"/>
+                            </div>
+                            <div class="wboxitem">
+                                    <img src="images/f_02.jpg" class="img100 ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s"/>
+                            </div>
+                            <div class="wboxitem">
+                                    <img src="images/f_03.jpg" class="img100 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0s"/>
+                            </div>
+                    </div>
+                    <div class="contaiersss center-center-column">
+                            <img src="images/f_04.jpg" class="img100 ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s" />
+                    </div>
+                    <div class="contaierss hor-center">
+                            <div class="wboxitem">
+                                    <img src="images/f_05.jpg" class="img100 ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s"/>
+                            </div>
+                            <div class="wboxitem">
+                                    <img src="images/f_06.jpg" class="img100 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0s"/>
+                            </div>
+                            <div class="wboxitem">
+                                    <img src="images/f_07.jpg" class="img100 ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s"/>
+                            </div>
+                    </div>
+                  
+            </div> -->
+
+
+
+            <div class="swiper-slide endbg">
+                <img src="images/end_01.png" class="img100 ani" swiper-animate-effect="zoomIn" swiper-animate-duration="0.5s" swiper-animate-delay="0s"
+                />
+                <img src="images/end_02.png" class="img100 ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.2s"
+                />
+                <img src="images/end_03.png" class="img100 ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"
+                />
+                <a id="btntoform" href="https://urapfi.fanqier.com/f/obo6xl">
+                    <img  src="images/end_04.png" class="img100 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="1s" />
+                </a>
+
+
+
+            </div>
+            <!-- <div class="swiper-slide">Slide 10</div> -->
+        </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div id="h-video"></div>
+</body>
+<script src="js/swiper-3.4.2.min.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/swiper.animate1.0.2.min.js"></script>
+<script type="text/javascript">
+    var together = new Date();
+    together.setFullYear(2015, 2, 15);
+    together.setHours(20);
+    together.setMinutes(0);
+    together.setSeconds(0);
+    together.setMilliseconds(0);
+    function timeElapse(date) {
+        var current = Date();
+        var seconds = (Date.parse(current) - Date.parse(date)) / 1000;
+        var days = Math.floor(seconds / (3600 * 24));
+        seconds = seconds % (3600 * 24);
+        var hours = Math.floor(seconds / 3600);
+        if (hours < 10) {
+            hours = "0" + hours;
+        }
+        seconds = seconds % 3600;
+        var minutes = Math.floor(seconds / 60);
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }
+        seconds = seconds % 60;
+        if (seconds < 10) {
+            seconds = "0" + seconds;
+        }
+        var result = "<span class=\"digit\">" + days + "</span> 天 <span class=\"digit\">" + hours + "</span> 小时 <span class=\"digit\">" + minutes + "</span> 分钟 <span class=\"digit\">" + seconds + "</span> 秒";
+        $("#elapseClock").html(result);
+    }
+
+    $(function () {
+        var timer2, timer3;
+        var swiper = new Swiper('.swiper-container', {
+            loop: true,
+            //initialSlide: 1,
+            paginationClickable: true,
+            hide: false,
+            snapOnRelease: true,
+            direction: 'vertical',
+            onInit: function (swiper) { //Swiper2.x的初始化是onFirstInit
+                swiperAnimateCache(swiper); //隐藏动画元素
+                swiperAnimate(swiper); //初始化完成开始动画
+            },
+
+            onSlideChangeEnd: function (swiper) {
+                swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+                console.log(swiper.activeIndex); //切换结束时，告诉我现在是第几个slide
+                if (swiper.activeIndex == 3) {
+                    $(".fpic").eq(0).addClass("front2").removeClass("front").next().addClass("back2").removeClass("back");
+                    var iNow = 0;
+                    var showNumber = $(".fpic");
+                    timer2 = setInterval(function () {
+                        iNow++;    //让图片的索引值次序加1，这样就可以实现顺序轮播图片
+                        console.log(iNow);
+                        if (iNow > showNumber.length - 1) { //当到达最后一张图的时候，让iNow赋值为第一张图的索引值，轮播效果跳转到第一张图重新开始
+                            iNow = 0;
+                        }
+                        showNumber.eq(iNow).trigger("click"); //模拟触发数字按钮的click
+
+                    }, 2000);
+                    timeElapse(together);
+                    timer3 = setInterval(function () {
+                        timeElapse(together);
+                    }, 500);
+                } else {
+                    clearInterval(timer2);
+                    clearInterval(timer3);
+                    $(".bpic").addClass("back").removeClass("back2").prev().addClass("front").removeClass("front2");
+                };
+                if (swiper.activeIndex == 6) {
+                    $("#plpimg").html('<img src="images/1.jpg" class="img100" style="opacity: 0.5;" />')
+                }
+
+            }
+        });
+        var swiper2 = new Swiper('.swiper-container2', {
+            // nextButton: '.swiper-button-next',
+            // prevButton: '.swiper-button-prev',
+            loop: true,
+            autoplay: 1000,
+            autoplayDisableOnInteraction: false,
+            speed: 1000,
+        });
+
+        (function ($) {
+            $.fn.typewriter = function () {
+                this.each(function () {
+                    var $ele = $(this), str = $ele.html(), progress = 0;
+                    $ele.html('');
+                    var timer = setInterval(function () {
+                        var current = str.substr(progress, 1);
+                        if (current == '<') {
+                            progress = str.indexOf('>', progress) + 1;
+                        } else {
+                            progress++;
+                        }
+                        $ele.html(str.substring(0, progress) + (progress & 1 ? '_' : ''));
+                        if (progress >= str.length) {
+                            clearInterval(timer);
+                            $("#rowdown").css("display", "block")
+                        }
+                    }, 50);
+                });
+                return this;
+            };
+        })(jQuery);
+        // $("#btntoform").click(function(){
+        //     window.location.href="https://urapfi.fanqier.com/f/obo6xl"
+        // })
+        $(".fpic").click(function () {
+            if ($(this).hasClass("front")) {
+                $(".bpic").addClass("back").removeClass("back2").prev().addClass("front").removeClass("front2");
+                $(this).addClass("front2").removeClass("front").next().addClass("back2").removeClass("back");
+
+            }
+            //event.stopPropagation();
+        });
+        $(".bpic").click(function () {
+            if ($(this).hasClass("back2")) {
+                $(this).addClass("back").removeClass("back2").prev().addClass("front").removeClass("front2");
+            }
+            //event.stopPropagation();
+        });
+        $('#whtlr').on('touchstart', function (e) {
+            startX = e.originalEvent.changedTouches[0].pageX,
+                startY = e.originalEvent.changedTouches[0].pageY;
+        });
+        $('#whtlr').on('touchmove', function (e) {
+            moveX = e.originalEvent.changedTouches[0].pageX,
+                moveY = e.originalEvent.changedTouches[0].pageY;
+            X = moveX - startX,
+                Y = moveY - startY;
+            //左滑
+            // var left=$(this).css("left");
+            // var w=left.indexOf("p");
+            // var px=parseFloat(left.substring(0,w));
+            // var xp=px+X;
+            //console.log(px,X,px+X);
+
+            if (X > 0) {
+                //alert('左滑');
+                $(this).css("left", "70%");
+            }
+            //右滑
+            else if (X < 0) {
+                //alert('右滑');
+                $(this).css("left", "30%");
+            }
+        });
+        rotex = 0;
+        $('#whtlr').on('touchend', function (e) {
+            $(this).css("left", "50%");
+            moveEndX = e.originalEvent.changedTouches[0].pageX,
+                moveEndY = e.originalEvent.changedTouches[0].pageY,
+                Xe = moveEndX - startX,
+                Ye = moveEndY - startY;
+            if (Xe > 0) {
+                rotex++;
+                console.log(rotex);
+                if (rotex < 6) {
+                    $("#whtpic").html('<img src="images/wht' + rotex + '.png" class="img100 rotepic" />');
+                } else {
+                    rotex = 0;
+                    $("#whtpic").html('<img src="images/wht' + rotex + '.png" class="img100 rotepic" />');
+                }
+
+            } else if (Xe < 0) {
+                rotex--;
+                console.log(rotex);
+                if (rotex < 0) {
+                    rotex = 5;
+                    $("#whtpic").html('<img src="images/wht' + rotex + '.png" class="img100 rotepic" />');
+                } else {
+                    $("#whtpic").html('<img src="images/wht' + rotex + '.png" class="img100 rotepic" />');
+                }
+            }
+        });
+        $(".sea-plp").each(function (index, item) {
+            $(this).click(function () {
+                console.log(index);
+                $("#plpimg").html('<img src="images/h' + index + '.jpg" class="img100" />')
+            })
+
+            //
+        })
+    });
+
+</script>
+
+
+<script type="text/javascript">
+    function wxajax() {
+        var url = location.href;
+        $.ajax({
+            type: "POST",
+            url: 'http://api.chuangshi.nowui.com/wechat/config?app_id=dad947bec0c54ff8b12586eda1c8e146&url=' + url,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'app_id': 'dad947bec0c54ff8b12586eda1c8e146',
+                'token': '',
+                'platform': 'WEB',
+                'version': '1.0.0'
+            },
+            data: JSON.stringify({}),
+            success: function (data, status, xhr) {
+                console.log(data);
+                if (data.code == 200) {
+                    wx.config({
+                        debug: false,
+                        appId: "wx934f793803320ecd",
+                        timestamp: data.data.timestamp,
+                        nonceStr: data.data.nonceStr,
+                        signature: data.data.signature,
+                        jsApiList: [
+                            'checkJsApi',
+                            'onMenuShareTimeline',
+                            'onMenuShareAppMessage',
+                            'onMenuShareQQ',
+                            'onMenuShareWeibo',
+                            'scanQRCode'
+                        ]
+                    });
+
+                    window.share_config = {
+                        "share": {
+                            "imgUrl": "http://h5.chuangshi.nowui.com/cglovexl/images/icon.jpg",
+                            "desc": "【陈盖&张小玲】10月6日诚邀各位亲朋好友来参加我们的婚宴，敬备薄酌恭候光临",
+                            "title": '我们结婚啦!一起聚聚吃个饭吧！',
+                            "link": "http://h5.chuangshi.nowui.com/cglovexl",
+                            "success": function () {
+                                //alert("分享成功")
+                            },
+                            'cancel': function () {
+
+                            }
+                        }
+                    };
+                    wx.ready(function () {
+                        wx.onMenuShareAppMessage(share_config.share);
+                        wx.onMenuShareTimeline(share_config.share);
+                        wx.onMenuShareQQ(share_config.share);
+                        var audio = document.createElement('audio')  //生成一个audio元素
+                        audio.src = "images/music.mp3";  //音乐的路径
+                        audio.autoplay = true;
+                        audio.loop = true;
+                        audio.id = "music1";
+                        $("#h-video").append(audio)  //把它添加到页面中
+                        document.querySelector('audio').play();
+                    });
+                }
+
+            },
+            error: function (xhr, errorType, error) {
+
+            },
+            complete: function (xhr, status) {
+
+            }
+        });
+    }
+
+</script>
+<script src="js/preloadjs-0.6.2.min.js"></script>
+
+<script src="js/loading.js"></script>
+
+</html>
+<!--░░░░░░░░░░░░░░░░░░░░░░░░▄░░-->
+<!--░░░░░░░░░▐█░░░░░░░░░░░▄▀▒▌░-->
+<!--░░░░░░░░▐▀▒█░░░░░░░░▄▀▒▒▒▐-->
+<!--░░░░░░░▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐-->
+<!--░░░░░▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐-->
+<!--░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌-->
+<!--░░▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒-->
+<!--░░▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐-->
+<!--░▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄-->
+<!--░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒-->
+<!--▀▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒-->
+<!--单身狗就这样默默地看着你，一句话也不说。-->
