@@ -66,10 +66,8 @@ window.Pcontrols = (function () {
             }
             //触摸开始
             function getTouchStart(e) {
-                e.preventDefault;
-                document.querySelector('body').addEventListener('touchstart', function (ev) {
-                    ev.preventDefault();
-                });
+                e.preventDefault();
+                
                 var target = e.target;
                 var touch = e.targetTouches[0];
                 _self.startX = touch.pageX;
@@ -82,7 +80,7 @@ window.Pcontrols = (function () {
                 target.style.webkitTransitionDuration = target.style.transitionDuration = '0ms';
             }
             function getTouchMove(e) {
-                e.preventDefault;
+                e.preventDefault();
                 var target = e.target;
                 var touch = e.targetTouches[0];
                 _self.endX = touch.pageX;
@@ -97,10 +95,8 @@ window.Pcontrols = (function () {
 
             }
             function getTouchEnd(e) {
-                e.preventDefault;
-                document.querySelector('body').removeEventListener('touchstart', function (ev) {
-                    ev.preventDefault();
-                });
+                e.preventDefault();
+
                 if (_self.endY) {
                     var numend = _self.endY - _self.startY;
                     var movenumend = parseInt(_self.transformY) + numend;
