@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <!-- 宽度设置为设备实际宽度，初始化倍数为1，最小倍数为1，最大倍数为1，用户缩放为否 -->
+    <meta name="viewport" content="width=device-width,inital-scale=1.0,minimum-scale=1.0,maximum-scake=1.0,user-scalable=no"
+    />
+    <!-- 删除默认的苹果工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- 苹果手机顶部为黑色 -->
+    <meta name="apple-mobile-web-status-bar-style" content="block" />
+    <!-- 屏蔽浏览器自动识别数字为电话号码 -->
+    <meta name="fromat-detecition" content="telephone=no" />
+    <!-- base.css是所有项目都会用到的底层样式 -->
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <!-- content.css是每个项目所有页面都会用到的公共样式 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/content.css" />   -->
+    <!-- main.css为每个页面或是模块用到的一个样式文件-->
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <title></title>
+    <!-- <script type="text/javascript" src="lib/jquery-1.8.2.min.js"></script>   -->
+    <!-- base.js为所有项目都会用到的js文件 -->
+    <script type="text/javascript" src="lib/base.js"></script>
+</head>
+
+<body>
+    <div id="app" class="apps">
+        <div class="left">车型</div>
+        <div class="right" id="target">请选择 ></div>
+        <div class="clear"></div>
+    </div>
+    <div id="app2" class="apps">
+        <div class="left">性质</div>
+        <div class="right" id="target2">请选择 ></div>
+        <div class="clear"></div>
+    </div>
+    
+    <!-- <div class="mask"></div>
+    <div class="popup">
+        <div class="popupbutton">
+            <div class="cancel">取消</div>
+            <div class="sure">确定</div>
+            <div class="clear"></div>
+        </div>
+        <div class="picker">
+            <div class="picker-mask"></div>
+            <div class="popup-items">
+                <div class="popup-item">1</div>
+                <div class="popup-item">1</div>
+                <div class="popup-item">1</div>
+                <div class="popup-item">1</div>
+                <div class="popup-item">1</div>
+                <div class="popup-item">1</div>
+            </div>
+        </div>
+
+    </div> -->
+    <script>
+        var area = new Pcontrols();
+        area.init({
+            trigger: "#app",
+            target:"#target",
+            data: ["小车", "货车", "火车","单车","其他"]
+        });
+        var area2 = new Pcontrols();
+        area2.init({
+            trigger: "#app2",
+            target:"#target2",
+            data: ["单位车", "个人车"]
+        })
+        
+    </script>
+</body>
+
+</html>
